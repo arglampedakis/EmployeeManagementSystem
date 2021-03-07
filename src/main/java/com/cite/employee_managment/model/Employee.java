@@ -31,7 +31,7 @@ public class Employee implements Serializable {
 
     @Basic(optional = false)
     @Column(name = "EMP_Vehicle")
-    private Integer empVehicle;
+    private boolean empVehicle;
 
     @Column(name = "EMP_Supervisor")
     private Integer empSupervisor;

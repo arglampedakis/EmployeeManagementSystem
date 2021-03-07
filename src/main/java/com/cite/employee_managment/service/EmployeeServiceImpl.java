@@ -2,37 +2,33 @@ package com.cite.employee_managment.service;
 
 import com.cite.employee_managment.dto.EmployeeDto;
 import com.cite.employee_managment.mapper.EmployeeMapper;
+import com.cite.employee_managment.model.Attribute;
 import com.cite.employee_managment.model.Employee;
 import com.cite.employee_managment.repo.EmployeeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
 
-    @Autowired
-    private EmployeeRepository employeeRepository;
-
-    @Autowired
-    private EmployeeMapper employeeMapper;
+    private final EmployeeRepository employeeRepository;
+    private final EmployeeMapper employeeMapper;
 
     @Override
-    public Employee save(Employee employee) {
-        return employeeRepository.save(employee);
+    public EmployeeDto save(Employee employee) {
+        return employeeMapper.employeeToEmployeeDto(employeeRepository.save(employee));
     }
 
     @Override
-    public EmployeeDto findById(Integer empId) {
+    public EmployeeDto findById(int empId) {
         Optional<Employee> employeeOptional = employeeRepository.findById(empId);
 
-        if (employeeOptional.isPresent()) {
-            return employeeMapper.employeeToEmployeeDto(employeeOptional.get());
-        } else {
-            throw new RuntimeException("Not Found");
-        }
+        return employeeOptional.map(employeeMapper::employeeToEmployeeDto)
+                .orElseThrow(() -> new RuntimeException("Not Found"));
     }
 
     @Override
@@ -41,7 +37,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<Employee> findAll() {
-        return employeeRepository.findAll();
+    public List<EmployeeDto> findAll() {
+        return employeeMapper.employeesToEmployeeDtos(employeeRepository.findAll());
     }
+
+    @Override
+    public List<EmployeeDto> findByAttributes(Attribute... attributes) {
+        return employeeMapper.employeesToEmployeeDtos(employeeRepository.findByAttributesCollection(attributes));
+    }
+
+
 }

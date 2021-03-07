@@ -1,10 +1,11 @@
 package com.cite.employee_managment.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class AttributeDto {
     private Integer attrId;
     private String attrName;

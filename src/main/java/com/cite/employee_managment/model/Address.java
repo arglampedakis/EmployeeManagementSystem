@@ -39,7 +39,6 @@ public class Address implements Serializable {
     @Column(name = "ADDR_PostalCode", nullable = false)
     private String addrPostalcode;
 
-    @Column(name = "ADDR_EmpID", nullable = false)
     @OneToOne
     @JoinColumn(name = "ADDR_EmpID", referencedColumnName = "EMP_ID")
     private Employee addrEmpid;

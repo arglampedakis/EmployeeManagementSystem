@@ -2,40 +2,30 @@ package com.cite.employee_managment.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.OffsetDateTime;
 
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
+@Builder
+@AllArgsConstructor
 public class EmployeeDto {
 
-    @Builder
-    public EmployeeDto(Integer empId, String empName, OffsetDateTime empDateOfBirth, boolean empVehicle, Integer empSupervisor) {
-        this.empId = empId;
-        this.empName = empName;
-        this.empDateOfBirth = empDateOfBirth;
-        this.empVehicle = empVehicle;
-        this.empSupervisor = empSupervisor;
-    }
-
-    @JsonProperty("empId")
+    //    @JsonProperty("empId")
     private Integer empId;
 
-    @JsonProperty("empName")
+    //    @JsonProperty("empName")
     private String empName;
 
-    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ssZ", shape=JsonFormat.Shape.STRING)
-    @JsonProperty("empDateOfBirth")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ssZ", shape = JsonFormat.Shape.STRING)
+//    @JsonProperty("empDateOfBirth")
     private OffsetDateTime empDateOfBirth;
 
-    @JsonProperty("empVehicle")
+    //    @JsonProperty("empVehicle")
     private boolean empVehicle;
 
-    @JsonProperty("empSupervisor")
+    //    @JsonProperty("empSupervisor")
     private Integer empSupervisor;
 }

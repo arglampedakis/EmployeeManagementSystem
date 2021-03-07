@@ -1,12 +1,13 @@
 package com.cite.employee_managment.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class AddressDto {
     private Integer addrId;
     private BigDecimal addrLongitude;

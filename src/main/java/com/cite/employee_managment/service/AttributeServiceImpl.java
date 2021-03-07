@@ -1,18 +1,44 @@
 package com.cite.employee_managment.service;
 
+import com.cite.employee_managment.dto.AttributeDto;
+import com.cite.employee_managment.mapper.AttributeMapper;
 import com.cite.employee_managment.model.Attribute;
 import com.cite.employee_managment.repo.AttributeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
+@RequiredArgsConstructor
 public class AttributeServiceImpl implements AttributeService {
 
-    @Autowired
-    private AttributeRepository attributeRepository;
+    private final AttributeRepository attributeRepository;
+    private final AttributeMapper attributeMapper;
 
     @Override
-    public Attribute save(Attribute attribute) {
-        return attributeRepository.save(attribute);
+    public AttributeDto save(Attribute attribute) {
+        return attributeMapper
+                .attributeToAttributeDto(attributeRepository.save(attribute));
+    }
+
+    @Override
+    public void delete(Attribute attribute) {
+        attributeRepository.delete(attribute);
+    }
+
+    @Override
+    public AttributeDto findById(int attrId) {
+        Optional<Attribute> attributeOptional = attributeRepository.findById(attrId);
+
+        return attributeOptional.map(attributeMapper::attributeToAttributeDto)
+                .orElseThrow(() -> new RuntimeException("Not Found"));
+    }
+
+    @Override
+    public List<AttributeDto> findAll() {
+        return attributeMapper
+                .attributesToAttributeDtos(attributeRepository.findAll());
     }
 }
