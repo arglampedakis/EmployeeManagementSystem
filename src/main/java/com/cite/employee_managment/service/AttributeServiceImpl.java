@@ -25,8 +25,9 @@ public class AttributeServiceImpl implements AttributeService {
     }
 
     @Override
-    public void delete(Attribute attribute) {
-        attributeRepository.delete(attribute);
+    public void delete(AttributeDto attributeDto) {
+        attributeRepository.delete(
+                attributeMapper.attributeDtoToAttribute(attributeDto));
     }
 
     @Override

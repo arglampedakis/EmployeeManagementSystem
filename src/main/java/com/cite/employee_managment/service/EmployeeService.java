@@ -12,7 +12,7 @@ public interface EmployeeService {
 
     EmployeeDto findById(int empId);
 
-    void delete(Employee employee);
+    void delete(EmployeeDto employeeDto);
 
     List<EmployeeDto> findAll();
 

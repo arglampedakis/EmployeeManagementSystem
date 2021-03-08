@@ -1,7 +1,6 @@
 package com.cite.employee_managment.controller;
 
 import com.cite.employee_managment.dto.EmployeeDto;
-import com.cite.employee_managment.mapper.EmployeeMapper;
 import com.cite.employee_managment.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,10 +15,9 @@ import java.util.List;
 public class EmployeeController {
 
     private final EmployeeService employeeService;
-    private final EmployeeMapper employeeMapper;
 
     @GetMapping(path = "/{empId}", produces = {"application/json"})
-    public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable("empId") Integer empId) {
+    public ResponseEntity<EmployeeDto> getById(@PathVariable("empId") Integer empId) {
         return new ResponseEntity<>(employeeService.findById(empId), HttpStatus.OK);
     }
 
@@ -36,8 +34,7 @@ public class EmployeeController {
     @GetMapping(path = "/delete/{empId}", produces = {"application/json"})
     public void delete(@PathVariable("empId") int empId) {
         employeeService.delete(
-                employeeMapper.employeeDtoToEmployee(
-                        employeeService.findById(empId)));
+                employeeService.findById(empId));
     }
 
 }

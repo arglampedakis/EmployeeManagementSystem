@@ -9,7 +9,7 @@ public interface AttributeService {
 
     AttributeDto save(AttributeDto attributeDto);
 
-    void delete(Attribute attribute);
+    void delete(AttributeDto attributeDto);
 
     AttributeDto findById(int attrId);
 

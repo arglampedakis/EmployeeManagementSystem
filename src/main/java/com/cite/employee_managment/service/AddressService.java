@@ -5,9 +5,9 @@ import com.cite.employee_managment.model.Address;
 
 public interface AddressService {
 
-    AddressDto save(Address address);
+    AddressDto save(AddressDto addressDto);
 
-    void delete(Address address);
+    void delete(AddressDto addressDto);
 
     AddressDto findById(int addrId);
 }

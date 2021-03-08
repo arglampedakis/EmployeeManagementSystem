@@ -17,14 +17,16 @@ public class AddressServiceImpl implements AddressService {
     private final AddressMapper addressMapper;
 
     @Override
-    public AddressDto save(Address address) {
-        return addressMapper
-                .addressToAddressDto(addressRepository.save(address));
+    public AddressDto save(AddressDto addressDto) {
+        return addressMapper.addressToAddressDto(
+                addressRepository.save(
+                        addressMapper.addressDtoToAddress(addressDto)));
     }
 
     @Override
-    public void delete(Address address) {
-        addressRepository.delete(address);
+    public void delete(AddressDto addressDto) {
+        addressRepository.delete(
+                addressMapper.addressDtoToAddress(addressDto));
     }
 
     @Override
