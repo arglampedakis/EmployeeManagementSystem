@@ -46,7 +46,8 @@ class AddressServiceImplTest {
         Address address = new Address();
         given(addressRepository.save(address)).willReturn(address);
 
-        AddressDto returnedAddress = addressService.save(address);
+        AddressDto returnedAddress = addressService.save(
+                addressMapper.addressToAddressDto(address));
 
         then(addressRepository).should(times(1)).save(address);
         assertThat(returnedAddress).isNotNull();
@@ -56,9 +57,10 @@ class AddressServiceImplTest {
 
     @Test
     void delete() {
-        addressService.delete(address);
+        addressService.delete(
+                addressMapper.addressToAddressDto(address));
 
-        then(addressRepository).should().delete(address);
+        then(addressRepository).should(times(1)).delete(address);
     }
 
     @Test

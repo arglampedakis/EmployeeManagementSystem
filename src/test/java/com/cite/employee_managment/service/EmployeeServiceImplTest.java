@@ -87,7 +87,8 @@ class EmployeeServiceImplTest {
     @Test
     void delete() {
         //when
-        employeeService.delete(employee);
+        employeeService.delete(
+                employeeMapper.employeeToEmployeeDto(employee));
 
         then(employeeRepository).should(times(1)).delete(employee);
     }

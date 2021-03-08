@@ -57,9 +57,10 @@ class AttributeServiceImplTest {
 
     @Test
     void delete() {
-        attributeService.delete(attribute);
+        attributeService.delete(
+                attributeMapper.attributeToAttributeDto(attribute));
 
-        then(attributeRepository).should().delete(attribute);
+        then(attributeRepository).should(times(1)).delete(attribute);
     }
 
     @Test
