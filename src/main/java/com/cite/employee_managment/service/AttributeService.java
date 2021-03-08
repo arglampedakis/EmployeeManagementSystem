@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface AttributeService {
 
-    AttributeDto save(Attribute attribute);
+    AttributeDto save(AttributeDto attributeDto);
 
     void delete(Attribute attribute);
 

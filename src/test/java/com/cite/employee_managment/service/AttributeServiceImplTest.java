@@ -46,7 +46,9 @@ class AttributeServiceImplTest {
         //given
         given(attributeRepository.save(attribute)).willReturn(attribute);
         //when
-        AttributeDto returnedAttributeDto = attributeService.save(attribute);
+        AttributeDto returnedAttributeDto =
+                attributeService.save(
+                        attributeMapper.attributeToAttributeDto(attribute));
         //then
         then(attributeRepository).should(times(1)).save(attribute);
         assertThat(returnedAttributeDto).isNotNull();

@@ -18,9 +18,10 @@ public class AttributeServiceImpl implements AttributeService {
     private final AttributeMapper attributeMapper;
 
     @Override
-    public AttributeDto save(Attribute attribute) {
-        return attributeMapper
-                .attributeToAttributeDto(attributeRepository.save(attribute));
+    public AttributeDto save(AttributeDto attributeDto) {
+        return attributeMapper.attributeToAttributeDto(
+                attributeRepository.save(
+                        attributeMapper.attributeDtoToAttribute(attributeDto)));
     }
 
     @Override

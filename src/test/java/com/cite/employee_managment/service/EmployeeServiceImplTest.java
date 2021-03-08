@@ -49,7 +49,8 @@ class EmployeeServiceImplTest {
     void save() {
         given(employeeRepository.save(employee)).willReturn(employee);
 
-        EmployeeDto returnedEmployeeDto = employeeService.save(employee);
+        EmployeeDto returnedEmployeeDto =
+                employeeService.save(employeeMapper.employeeToEmployeeDto(employee));
 
         then(employeeRepository).should(times(1)).save(employee);
         assertThat(returnedEmployeeDto)

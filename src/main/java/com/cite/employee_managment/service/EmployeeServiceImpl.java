@@ -19,8 +19,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeMapper employeeMapper;
 
     @Override
-    public EmployeeDto save(Employee employee) {
-        return employeeMapper.employeeToEmployeeDto(employeeRepository.save(employee));
+    public EmployeeDto save(EmployeeDto employeeDto) {
+        return employeeMapper.employeeToEmployeeDto(
+                employeeRepository.save(
+                        employeeMapper.employeeDtoToEmployee(employeeDto)));
     }
 
     @Override
@@ -38,12 +40,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<EmployeeDto> findAll() {
-        return employeeMapper.employeesToEmployeeDtos(employeeRepository.findAll());
+        return employeeMapper.employeesToEmployeeDtos(
+                employeeRepository.findAll());
     }
 
     @Override
     public List<EmployeeDto> findByAttributes(Attribute... attributes) {
-        return employeeMapper.employeesToEmployeeDtos(employeeRepository.findByAttributesCollection(attributes));
+        return employeeMapper.employeesToEmployeeDtos(
+                employeeRepository.findByAttributesCollection(attributes));
     }
 
 

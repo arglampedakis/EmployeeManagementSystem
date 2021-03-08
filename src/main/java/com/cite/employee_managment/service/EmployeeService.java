@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface EmployeeService {
 
-    EmployeeDto save(Employee employee);
+    EmployeeDto save(EmployeeDto employeeDto);
 
     EmployeeDto findById(int empId);
 
