@@ -21,7 +21,7 @@
 
 Το παρακάτω σχήμα δείχνει τις οντότητες και τις αντίστοιχες συσχετίσεις τους:
 
-![alt text](http://https://github.com/arglampedakis/EmployeeManagementSystem/blob/master/src/main/resources/static/img/sample%20database%20schema.png)
+![alt text](https://github.com/arglampedakis/EmployeeManagementSystem/blob/master/src/main/resources/static/img/sample%20database%20schema.png?raw=true)
 
 Η Βάση δεδομένων θα πρέπει να υλοποιηθεί σε MySQL.
 
