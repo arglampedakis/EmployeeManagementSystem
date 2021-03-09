@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(uses = DateMapper.class, componentModel = "spring")
+@Mapper
 public interface EmployeeMapper {
 
     EmployeeDto employeeToEmployeeDto(Employee employee);

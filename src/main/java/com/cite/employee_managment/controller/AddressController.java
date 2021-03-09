@@ -20,7 +20,7 @@ public class AddressController {
     }
 
     @PostMapping(path = "/save", produces = {"application/json"})
-    public ResponseEntity<AddressDto> save(@RequestParam AddressDto addressDto) {
+    public ResponseEntity<AddressDto> save(@RequestBody AddressDto addressDto) {
         return new ResponseEntity<>(addressService.save(addressDto), HttpStatus.OK);
     }
 

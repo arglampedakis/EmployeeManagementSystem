@@ -1,12 +1,11 @@
 package com.cite.employee_managment.model;
 
-import com.sun.istack.NotNull;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.Date;
 
 @Data
 @Entity
@@ -26,8 +25,9 @@ public class Employee implements Serializable {
     private String empName;
 
     @Basic(optional = false)
-    @Column(name = "EMP_DateOfBirth", nullable = false)
-    private Timestamp empDateofbirth;
+    @Column(name = "EMP_dateofbirth", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date empDateOfBirth;
 
     @Basic(optional = false)
     @Column(name = "EMP_Vehicle")

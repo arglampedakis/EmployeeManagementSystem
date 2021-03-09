@@ -105,7 +105,8 @@ class EmployeeServiceImplTest {
         then(employeeRepository).should(times(1)).findAll();
         assertThat(employeeDtos).hasSize(2);
         assertThat(employeeDtos).isEqualTo(employeeMapper.employeesToEmployeeDtos(employees));
-        assertThat(employeeMapper.employeeDtosToEmployees(employeeDtos)).isEqualTo(employees);
+        assertThat(employeeMapper.employeeDtosToEmployees(employeeDtos))
+                .isEqualTo(employees);
     }
 
     @Test

@@ -17,6 +17,6 @@ public class AddressDto {
     private String addrCity;
     private String addrStreetNumber;
     private String addrPostalCode;
-    private Integer addrEmpId;
+    private int addrEmpId;
 
 }

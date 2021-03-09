@@ -15,6 +15,7 @@ public class Address implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
     @Column(name = "ADDR_ID", nullable = false)
     private Integer addrId;
 
@@ -27,17 +28,17 @@ public class Address implements Serializable {
     @Column(name = "ADDR_Country", nullable = false)
     private String addrCountry;
 
-    @Column(name = "ADDR_StreetName", nullable = false)
-    private String addrStreetname;
-
     @Column(name = "ADDR_City", nullable = false)
     private String addrCity;
 
-    @Column(name = "ADDR_StreetNumber", nullable = false)
-    private String addrStreetnumber;
+    @Column(name = "ADDR_Streetname", nullable = false)
+    private String addrStreetName;
 
-    @Column(name = "ADDR_PostalCode", nullable = false)
-    private String addrPostalcode;
+    @Column(name = "ADDR_Streetnumber", nullable = false)
+    private String addrStreetNumber;
+
+    @Column(name = "ADDR_Postalcode", nullable = false)
+    private String addrPostalCode;
 
     @OneToOne
     @JoinColumn(name = "ADDR_EmpID", referencedColumnName = "EMP_ID")

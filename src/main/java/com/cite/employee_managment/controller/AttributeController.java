@@ -4,6 +4,7 @@ import com.cite.employee_managment.dto.AttributeDto;
 import com.cite.employee_managment.service.AttributeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,8 +27,8 @@ public class AttributeController {
         return new ResponseEntity<>(attributeService.findAll(), HttpStatus.OK);
     }
 
-    @PostMapping(path = "/save", produces = {"application/json"})
-    public ResponseEntity<AttributeDto> save(@RequestParam AttributeDto attributeDto) {
+    @PostMapping(path = "/save", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AttributeDto> save(@RequestBody AttributeDto attributeDto) {
         return new ResponseEntity<>(attributeService.save(attributeDto), HttpStatus.OK);
     }
 

@@ -14,6 +14,8 @@ public class Attribute implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
     @Column(name = "ATTR_ID", nullable = false)
     private Integer attrId;
 
