@@ -34,6 +34,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public Employee findEmployeeById(int empId) {
+        Optional<Employee> employeeOptional = employeeRepository.findById(empId);
+
+        if (employeeOptional.isPresent()) {
+            return employeeOptional.get();
+        } else {
+            throw new RuntimeException("Not Found");
+        }
+    }
+
+    @Override
     public void delete(EmployeeDto employeeDto) {
         employeeRepository.delete(
                 employeeMapper.employeeDtoToEmployee(employeeDto));

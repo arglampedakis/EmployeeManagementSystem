@@ -3,6 +3,7 @@ package com.cite.employee_managment.service;
 import com.cite.employee_managment.dto.AddressDto;
 import com.cite.employee_managment.mapper.AddressMapper;
 import com.cite.employee_managment.model.Address;
+import com.cite.employee_managment.model.Employee;
 import com.cite.employee_managment.repo.AddressRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class AddressController {
 
     private final AddressService addressService;
+//    private final EmployeeService employeeService;
 
     @GetMapping(path = "/{addrId}", produces = {"application/json"})
     public ResponseEntity<AddressDto> getById(@PathVariable("addrId") int addrId) {
@@ -20,8 +21,8 @@ public class AddressController {
     }
 
     @PostMapping(path = "/save", produces = {"application/json"})
-    public ResponseEntity<AddressDto> save(@RequestBody AddressDto addressDto) {
-        return new ResponseEntity<>(addressService.save(addressDto), HttpStatus.OK);
+    public ResponseEntity<Integer> save(@RequestBody AddressDto addressDto) {
+        return new ResponseEntity<>(addressService.save(addressDto).getAddrId(), HttpStatus.OK);
     }
 
     @GetMapping(path = "/delete/{addrId}", produces = {"application/json"})

@@ -36,6 +36,10 @@ public class Employee implements Serializable {
     @Column(name = "EMP_Supervisor")
     private Integer empSupervisor;
 
+//    @JoinColumn(name = "EMP_Supervisor", referencedColumnName = "EMP_ID")
+//    @ManyToOne
+//    private Employee empSupervisor;
+
     @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "addrEmpid")
     private Address address;
 

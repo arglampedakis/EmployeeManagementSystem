@@ -12,6 +12,8 @@ public interface EmployeeService {
 
     EmployeeDto findById(int empId);
 
+    Employee findEmployeeById(int empId);
+
     void delete(EmployeeDto employeeDto);
 
     List<EmployeeDto> findAll();
