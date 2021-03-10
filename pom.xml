@@ -11,7 +11,7 @@
     <groupId>com.cite</groupId>
     <artifactId>employee_managment</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>employee_managment</name>
+    <name>employee_management</name>
     <description>Employee Data Management for Cite company</description>
     <properties>
         <java.version>11</java.version>

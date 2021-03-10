@@ -32,6 +32,7 @@ public class EmployeeController {
         return new ResponseEntity<>(employeeService.save(employeeDto), HttpStatus.OK);
     }
 
+    //TODO change the method to POST or DELETE
     @GetMapping(path = "/delete/{empId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void delete(@PathVariable("empId") int empId) {
         employeeService.delete(
