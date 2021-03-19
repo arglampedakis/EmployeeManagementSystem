@@ -86,8 +86,7 @@ class AddressControllerTest {
                         .content(json))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.addrId", is(1)))
-                .andExpect(jsonPath("$.addrCountry", is("Greece")));
+                .andExpect(jsonPath("$", is(1)));
     }
 
     @Test

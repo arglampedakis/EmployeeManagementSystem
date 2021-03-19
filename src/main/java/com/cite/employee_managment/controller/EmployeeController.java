@@ -28,8 +28,8 @@ public class EmployeeController {
     }
 
     @PostMapping(path = "/save", produces = {"application/json"}, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<EmployeeDto> save(@RequestBody EmployeeDto employeeDto) {
-        return new ResponseEntity<>(employeeService.save(employeeDto), HttpStatus.OK);
+    public ResponseEntity<Integer> save(@RequestBody EmployeeDto employeeDto) {
+        return new ResponseEntity<>(employeeService.save(employeeDto).getEmpId(), HttpStatus.OK);
     }
 
     //TODO change the method to POST or DELETE

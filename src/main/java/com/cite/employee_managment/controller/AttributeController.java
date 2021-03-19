@@ -28,8 +28,8 @@ public class AttributeController {
     }
 
     @PostMapping(path = "/save", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AttributeDto> save(@RequestBody AttributeDto attributeDto) {
-        return new ResponseEntity<>(attributeService.save(attributeDto), HttpStatus.OK);
+    public ResponseEntity<Integer> save(@RequestBody AttributeDto attributeDto) {
+        return new ResponseEntity<>(attributeService.save(attributeDto).getAttrId(), HttpStatus.OK);
     }
 
     @GetMapping(path = "/delete/{attrId}", produces = {"application/json"})

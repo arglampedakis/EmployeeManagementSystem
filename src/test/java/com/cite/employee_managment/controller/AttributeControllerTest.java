@@ -120,8 +120,7 @@ class AttributeControllerTest {
                         .content(json))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.attrId", is(1)))
-                .andExpect(jsonPath("$.attrName", is("An Attribute")));
+                .andExpect(jsonPath("$", is(1)));
     }
 
     @Test

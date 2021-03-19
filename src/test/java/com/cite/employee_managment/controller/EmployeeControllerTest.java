@@ -136,8 +136,7 @@ class EmployeeControllerTest {
                         .content(json))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.empId", is(1)))
-                .andExpect(jsonPath("$.empName", is("John Doe")));
+                .andExpect(jsonPath("$", is(1)));
     }
 
     @Test
