@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/api/v1/attribute")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AttributeController {
 
     private final AttributeService attributeService;
@@ -34,8 +35,16 @@ public class AttributeController {
 
     @GetMapping(path = "/delete/{attrId}", produces = {"application/json"})
     public void delete(@PathVariable("attrId") int attrId) {
+        //TODO change it to DeleteMapping
         attributeService.delete(
                 attributeService.findById(attrId));
+    }
+
+    @GetMapping(path = "/checkName/{attrName}")
+    public ResponseEntity<Boolean> checkAttrName(@PathVariable String attrName) {
+        return new ResponseEntity<>(
+                attributeService.checkIfAttrNameExists(attrName),
+                HttpStatus.OK);
     }
 
 }

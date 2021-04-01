@@ -4,16 +4,17 @@ import com.cite.employee_managment.dto.AddressDto;
 import com.cite.employee_managment.service.AddressService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/api/v1/address")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AddressController {
 
     private final AddressService addressService;
-//    private final EmployeeService employeeService;
 
     @GetMapping(path = "/{addrId}", produces = {"application/json"})
     public ResponseEntity<AddressDto> getById(@PathVariable("addrId") int addrId) {

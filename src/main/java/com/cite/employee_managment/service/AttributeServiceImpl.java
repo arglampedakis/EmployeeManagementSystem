@@ -43,4 +43,11 @@ public class AttributeServiceImpl implements AttributeService {
         return attributeMapper
                 .attributesToAttributeDtos(attributeRepository.findAll());
     }
+
+    @Override
+    public boolean checkIfAttrNameExists(String attrName) {
+        Attribute attribute = new Attribute();
+        attribute = attributeRepository.findAttributeByAttrName(attrName);
+        return attribute == null;
+    }
 }

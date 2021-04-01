@@ -14,4 +14,6 @@ public interface AttributeService {
     AttributeDto findById(int attrId);
 
     List<AttributeDto> findAll();
+
+    boolean checkIfAttrNameExists(String attrName);
 }
