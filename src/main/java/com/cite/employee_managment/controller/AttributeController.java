@@ -13,33 +13,34 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/api/v1/attribute")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200", methods = { RequestMethod.GET, RequestMethod.DELETE, RequestMethod.POST})
 public class AttributeController {
 
     private final AttributeService attributeService;
 
-    @GetMapping(path = "/{attrId}", produces = {"application/json"})
+    @GetMapping(path = "/{attrId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AttributeDto> getById(@PathVariable("attrId") Integer attrId) {
         return new ResponseEntity<>(attributeService.findById(attrId), HttpStatus.OK);
     }
 
-    @GetMapping(path = "/", produces = {"application/json"})
+    @GetMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<AttributeDto>> getAll() {
         return new ResponseEntity<>(attributeService.findAll(), HttpStatus.OK);
     }
 
-    @PostMapping(path = "/save", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/save", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Integer> save(@RequestBody AttributeDto attributeDto) {
         return new ResponseEntity<>(attributeService.save(attributeDto).getAttrId(), HttpStatus.OK);
     }
 
-    @GetMapping(path = "/delete/{attrId}", produces = {"application/json"})
-    public void delete(@PathVariable("attrId") int attrId) {
-        //TODO change it to DeleteMapping
+    @DeleteMapping(path = "/delete/{attrId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> delete(@PathVariable("attrId") int attrId) {
         attributeService.delete(
                 attributeService.findById(attrId));
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    //TODO create test
     @GetMapping(path = "/checkName/{attrName}")
     public ResponseEntity<Boolean> checkAttrName(@PathVariable String attrName) {
         return new ResponseEntity<>(

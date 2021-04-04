@@ -44,6 +44,7 @@ public class AttributeServiceImpl implements AttributeService {
                 .attributesToAttributeDtos(attributeRepository.findAll());
     }
 
+    //TODO create test
     @Override
     public boolean checkIfAttrNameExists(String attrName) {
         Attribute attribute = new Attribute();
