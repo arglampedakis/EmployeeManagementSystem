@@ -57,7 +57,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<EmployeeDto> findByAttributes(Attribute... attributes) {
+    public List<EmployeeDto> findByAttributes(List<Attribute> attributes) {
         return employeeMapper.employeesToEmployeeDtos(
                 employeeRepository.findByAttributesCollection(attributes));
     }

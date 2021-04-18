@@ -18,6 +18,6 @@ public interface EmployeeService {
 
     List<EmployeeDto> findAll();
 
-    List<EmployeeDto> findByAttributes(Attribute... attributes);
+    List<EmployeeDto> findByAttributes(List<Attribute> attributes);
 
 }
