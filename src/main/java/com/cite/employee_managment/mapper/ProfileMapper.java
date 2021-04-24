@@ -5,11 +5,13 @@ import com.cite.employee_managment.dto.Profile;
 import com.cite.employee_managment.model.Employee;
 import com.cite.employee_managment.service.AttributeService;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
+@Component
 public class ProfileMapper {
 
     private final EmployeeMapper employeeMapper;
@@ -30,10 +32,12 @@ public class ProfileMapper {
 
     public Profile asProfile(Employee employee) {
         List<AttributeDto> attributeDtos = attributeService.findAll();
-
         employee.getAttributesCollection().forEach(attr -> {
-            attributeDtos.get(attributeDtos.indexOf(attr)).setChecked(true);
-        });
+                    attributeDtos.stream()
+                            .filter(attrDto -> attrDto.getAttrId().equals(attr.getAttrId()))
+                            .findFirst().get().setChecked(true);
+                }
+        );
 
         return Profile.builder()
                 .employeeDto(employeeMapper.employeeToEmployeeDto(employee))

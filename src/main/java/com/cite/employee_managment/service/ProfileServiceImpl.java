@@ -32,10 +32,12 @@ public class ProfileServiceImpl implements ProfileService {
                 employeeService.findEmployeeById(empId));
     }
 
+    //TODO fix this
     @Override
     public List<Profile> getByAttributes(List<AttributeDto> attributeDtos) {
-        return profileMapper.asProfileList(
-                employeeRepository.findByAttributesCollection(
-                        attributeMapper.attributeDtosToAttributes(attributeDtos)));
+//        return profileMapper.asProfileList(
+//                employeeRepository.findByAttributesCollection(
+//                        attributeMapper.attributeDtosToAttributes(attributeDtos)));
+        return null;
     }
 }

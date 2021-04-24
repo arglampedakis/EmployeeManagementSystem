@@ -56,10 +56,12 @@ public class EmployeeServiceImpl implements EmployeeService {
                 employeeRepository.findAll());
     }
 
+    //TODO fix this
     @Override
     public List<EmployeeDto> findByAttributes(List<Attribute> attributes) {
-        return employeeMapper.employeesToEmployeeDtos(
-                employeeRepository.findByAttributesCollection(attributes));
+//        return employeeMapper.employeesToEmployeeDtos(
+//                employeeRepository.findByAttributesCollection(attributes));
+        return null;
     }
 
 
