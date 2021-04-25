@@ -25,7 +25,7 @@ public class ProfileMapper {
         emp.setAttributesCollection(attributeMapper
                 .attributeDtosToAttributes(
                         profile.getAttributeDtos().stream()
-                                .filter(AttributeDto::isChecked)
+                                .filter(AttributeDto::isSelected)
                                 .collect(Collectors.toList())));
         return emp;
     }
@@ -35,7 +35,7 @@ public class ProfileMapper {
         employee.getAttributesCollection().forEach(attr -> {
                     attributeDtos.stream()
                             .filter(attrDto -> attrDto.getAttrId().equals(attr.getAttrId()))
-                            .findFirst().get().setChecked(true);
+                            .findFirst().get().setSelected(true);
                 }
         );
 

@@ -10,6 +10,6 @@ public class AttributeDto {
     private Integer attrId;
     private String attrName;
     private String attrValue;
-    private boolean isChecked;
+    private boolean selected;
 
 }
